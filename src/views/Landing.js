@@ -5,8 +5,17 @@ import { Button } from 'react-native-ui-kitten';
 const height = Math.round(Dimensions.get('window').height);
 const width = Math.round(Dimensions.get('window').width);
 
-const Landing = () => {
-    const _signIn = () => { }
+const Landing = (props) => {
+    const _signIn = () => {
+        console.log('sign in has been clicked');
+        props.navigation.navigate('Signin');
+    }
+
+    const _signup = () => {
+        console.log('sign in has been clicked');
+        props.navigation.navigate('Signup');
+    }
+
     return (
 
         <ImageBackground
@@ -33,17 +42,18 @@ const Landing = () => {
                 </View>
                 <View style={{ display: 'flex', flexDirection: 'row' }}>
                     <Button
-                        color='warning'
                         style={{ margin: 5, flex: 1 }}
                         onPress={_signIn}
                     >
                         Sign In
-                        </Button>
+                    </Button>
                     <Button
                         style={{ flex: 1, margin: 5 }}
+                        onPress={_signup}
+
                     >
                         Sign Up
-                        </Button>
+                    </Button>
                 </View>
             </View>
 
@@ -54,7 +64,7 @@ const Landing = () => {
     );
 
 }
-}
+
 
 
 const styles = StyleSheet.create({
