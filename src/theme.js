@@ -2,6 +2,8 @@ import { light as lightTheme } from '@eva-design/eva';
 
 export const theme = {
     ...lightTheme,
+
+    //login button color
     "color-primary-100": "#023b64",
     "color-primary-200": "#037097",
     "color-primary-300": "#14abd0",
@@ -18,7 +20,7 @@ export const theme = {
     "color-reddish-600": "blue",
     "color-reddish-700": "black",
 
-
+    //status bar color 
     "color-success-400": "#42b997",
     "color-success-500": "#41b7b4",
     "color-success-600": "#42b997",

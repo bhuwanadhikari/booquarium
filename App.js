@@ -1,13 +1,9 @@
 import React from 'react';
 
 import Profile from './src/components/Screens/Profile';
-
 import Signup from './src/components/AuthScreens/Signup';
-
 import Signin from './src/components/AuthScreens/Signin';
-
 import Home from './src/components/Screens/Home';
-
 import Landing from './src/views/Landing';
 import { mapping, light as lightTheme } from '@eva-design/eva';
 import { ApplicationProvider, IconRegistry, Layout, Text, Button, View, } from 'react-native-ui-kitten';
