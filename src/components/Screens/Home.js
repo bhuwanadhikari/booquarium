@@ -12,11 +12,9 @@ export const FacebookIcon = (style) => (
     <Icon name='menu-2-outline' {...style} />
 );
 
-const _hamburger = () => {
-    console.log('hamburuger is clicked');
-}
 
-const Home = () => {
+
+const Home = (props) => {
 
 
     return (
@@ -27,13 +25,16 @@ const Home = () => {
     );
 };
 
-Home.navigationOptions = () => ({
+Home.navigationOptions = (props) => ({
+    drawerLabel: 'Home',
     title: 'Booquarium',
     headerLeft: (
         <View style={{ paddingLeft: 10 }}>
             <Icon
-                onPress={_hamburger}
+                onPress={() => {
 
+                    props.navigation.toggleDrawer();;
+                }}
                 animation='pulse'
                 name='menu-2-outline'
                 width={32}

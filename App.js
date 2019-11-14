@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Profile from './src/components/Screens/Profile';
+import ProfileScreen from './src/components/Screens/Profile';
+import HomeScreen from './src/components/Screens/Home';
 import Signup from './src/components/AuthScreens/Signup';
 import Signin from './src/components/AuthScreens/Signin';
-import Home from './src/components/Screens/Home';
 import Landing from './src/views/Landing';
 import { mapping, light as lightTheme } from '@eva-design/eva';
 import { ApplicationProvider, IconRegistry, Layout, Text, Button, View, } from 'react-native-ui-kitten';
@@ -11,7 +11,7 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { theme } from './src/theme.js';
 import { StatusBar } from 'react-native';
 
-
+import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
@@ -37,16 +37,13 @@ const App = () => (
 
 
 
-const AppStack = createStackNavigator({
-	Home: {
-		screen: Home
-	},
-	Profile: {
-		screen: Profile
+const HomeStack = createStackNavigator({
+	HomeScreen: {
+		screen: HomeScreen
 	}
 },
 	{
-		initialRouteName: 'Home',
+		initialRouteName: 'HomeScreen',
 		defaultNavigationOptions: {
 			headerStyle: {
 				backgroundColor: '#41b7b4',
@@ -57,6 +54,35 @@ const AppStack = createStackNavigator({
 			},
 		},
 	});
+
+
+const ProfileStack = createStackNavigator({
+	ProfileScreen: {
+		screen: ProfileScreen
+	}
+},
+	{
+		initialRouteName: 'ProfileScreen',
+		defaultNavigationOptions: {
+			headerStyle: {
+				backgroundColor: '#41b7b4',
+			},
+			headerTintColor: '#fff',
+			headerTitleStyle: {
+				fontWeight: 'bold',
+			},
+		},
+	});
+
+
+const AppDrawer = createDrawerNavigator({
+	Home: {
+		screen: HomeStack
+	},
+	Profile: {
+		screen: ProfileStack
+	}
+});
 
 const AuthStack = createStackNavigator({
 	Landing: {
@@ -92,7 +118,7 @@ const BaseApp = createAppContainer(
 
 	createSwitchNavigator(
 		{
-			App: AppStack,
+			App: AppDrawer,
 			Auth: AuthStack,
 		},
 		{
