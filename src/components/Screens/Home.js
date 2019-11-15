@@ -8,6 +8,7 @@ import {
 
 import { View, Text, } from 'react-native';
 
+
 export const FacebookIcon = (style) => (
     <Icon name='menu-2-outline' {...style} />
 );
@@ -16,6 +17,19 @@ export const FacebookIcon = (style) => (
 
 const Home = (props) => {
 
+    const [value, setValue] = React.useState('myval');
+
+    const _search = () => {
+        props.navigation.navigate('Search')
+    }
+
+    React.useEffect(() => {
+        props.navigation.setParams({
+            _search
+        })
+    }, [])
+
+    console.log("value outside the navigationoption", value);
 
     return (
         <View>
@@ -25,7 +39,7 @@ const Home = (props) => {
     );
 };
 
-Home.navigationOptions = (props) => ({
+Home.navigationOptions = ({ navigation }) => ({
     drawerLabel: 'Home',
     title: 'Booquarium',
     headerLeft: (
@@ -37,6 +51,30 @@ Home.navigationOptions = (props) => ({
                 }}
                 animation='pulse'
                 name='menu-2-outline'
+                width={32}
+                height={32}
+                fill='#cef3f9'
+            />
+        </View>
+    ),
+    headerRight: (
+        <View style={{ width: 96, paddingLeft: 10, display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly' }}>
+            <Icon
+                onPress={navigation.getParam('_search')}
+                animation='pulse'
+                name='search-outline'
+                width={32}
+                height={32}
+                fill='#cef3f9'
+                padding={10}
+            />
+            <Icon
+                onPress={() => {
+
+                    props.navigation.toggleDrawer();;
+                }}
+                animation='pulse'
+                name='shopping-cart-outline'
                 width={32}
                 height={32}
                 fill='#cef3f9'

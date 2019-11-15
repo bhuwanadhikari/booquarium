@@ -2,6 +2,7 @@ import React from 'react';
 
 import ProfileScreen from './src/components/Screens/Profile';
 import HomeScreen from './src/components/Screens/Home';
+import Search from './src/components/Screens/Search';
 import Signup from './src/components/AuthScreens/Signup';
 import Signin from './src/components/AuthScreens/Signin';
 import Landing from './src/views/Landing';
@@ -37,9 +38,14 @@ const App = () => (
 
 
 
+
+
 const HomeStack = createStackNavigator({
 	HomeScreen: {
 		screen: HomeScreen
+	},
+	Search: {
+		screen: Search
 	}
 },
 	{
